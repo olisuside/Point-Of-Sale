@@ -1,45 +1,75 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="en">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ config('app.name') }} | @yield('title')</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/main/app.css">
+    <link rel="stylesheet" href="assets/css/main/app-dark.css">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="assets/css/pages/datatables.css">
 
-        <!-- Styles -->
-        @livewireStyles
-    </head>
-    <body class="font-sans antialiased">
-        <x-banner />
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+</head>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+<body>
+    <div id="app">
+        {{-- sidebar --}}
+        @include('layouts.sidebar')
+        {{-- end sidebar --}}
+
+        {{-- main --}}
+        <div id="main" class='layout-navbar'>
+            {{-- header --}}
+            @include('layouts.header')
+            {{-- end header --}}
+            <div id="main-content">
+                <div class="page-heading">
+                    <div class="page-title">
+                        <h3>@yield('title')</h3>
                     </div>
-                </header>
-            @endif
+                </div>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                <div class="page-content">
+                    <section class="row">
+                        <div class="col-12 col-lg-12">
+                            @yield('contents')
+                        </div>
+                    </section>
+                </div>
+
+                {{-- footer --}}
+
+                @include('layouts.footer')
+                {{-- end footer --}}
+            </div>
         </div>
+    </div>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/app.js"></script>
 
-        @stack('modals')
+    <!-- Need: Apexcharts -->
+    <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
 
-        @livewireScripts
-    </body>
+    <!-- jquery -->
+    <script src="assets/extensions/jquery/jquery.min.js"></script>
+    <!-- datatable -->
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+    {{-- <script src="assets/js/pages/datatables.js"></script> --}}
+
+
+
+    @stack('scripts')
+
+    <!-- data toggle -->
+
+
+</body>
+
 </html>
