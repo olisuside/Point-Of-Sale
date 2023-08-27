@@ -11,6 +11,8 @@
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
 
+    <link rel="stylesheet" href="assets/css/shared/iconly.css">
+
     <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="assets/css/pages/datatables.css">
 
