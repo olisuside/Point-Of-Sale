@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="assets/css/pages/datatables.css">
 
-
+    @stack('css')
 </head>
 
 <body>
