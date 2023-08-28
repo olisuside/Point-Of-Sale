@@ -25,6 +25,7 @@
                             <table class="table table-striped" id="table2">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Tanggal</th>
                                         <th>Deskripsi</th>
                                         <th>Nominal</th>
