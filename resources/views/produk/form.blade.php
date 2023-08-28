@@ -1,4 +1,4 @@
-{{-- modal tambah kategori --}}
+{{-- modal produk --}}
 <div class="modal fade text-left modal-borderless" id="modal-form" tabindex="-1" role="dialog"
     aria-labelledby="myModalLabel33" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">

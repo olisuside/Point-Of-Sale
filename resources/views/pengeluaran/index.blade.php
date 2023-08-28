@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Produk')
+@section('title', 'Pengeluaran')
 
 @section('contents')
     <section class="row">
@@ -9,8 +9,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <h4>Data Produk</h4>
-                            <a class="btn btn-sm btn-primary" title="Tambah Produk" onclick="addForm()"><i
+                            <h4>Data Supplier</h4>
+                            <a class="btn btn-sm btn-primary" title="Tambah Supllier" onclick="addForm()"><i
                                     class="bi bi-plus"></i></a>
                         </div>
 
@@ -25,14 +25,9 @@
                             <table class="table table-striped" id="table2">
                                 <thead>
                                     <tr>
-                                        <th>Kode</th>
-                                        <th>Nama Produk</th>
-                                        <th>Kategori</th>
-                                        <th>Merk</th>
-                                        <th>Harga Beli</th>
-                                        <th>Harga Jual</th>
-                                        <th>Diskon</th>
-                                        <th>Stok</th>
+                                        <th>Tanggal</th>
+                                        <th>Deskripsi</th>
+                                        <th>Nominal</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -44,50 +39,44 @@
             </div>
 
         </div>
-        @includeIf('produk.form')
+        @includeIf('pengeluaran.form')
     </section>
 
 @endsection
 
 @push('scripts')
     <script>
-        // let jquery_datatable = $("#table2").DataTable({
-        //     processing : true,
-        //     autoWidth : true,
-        //     ajax: {
-        //             url: '{{ route('kategori.data') }}',
-        //         },
-        //         columns: [
-        //             {data: 'DT_RowIndex', searchable: false, sortable: false},
-        //             {data: 'nama_kategori'},
-        //             {data: 'aksi', searchable: false, sortable: false},
-        //         ]
-        // });
-
-
         let table;
 
         $(function() {
             table = $('#table2').DataTable({
-                responsive: false,
+                responsive: true,
                 processing: true,
                 serverSide: true,
                 autoWidth: false,
                 ajax: {
-                url: '{{ route('produk.data') }}',
-            },
-            columns: [
-                {data: 'kode_produk'},
-                {data: 'nama_produk'},
-                {data: 'nama_kategori'},
-                {data: 'merk'},
-                {data: 'harga_beli'},
-                {data: 'harga_jual'},
-                {data: 'diskon'},
-                {data: 'stok'},
-                {data: 'aksi', searchable: false, sortable: false},
-            ]
-                
+                    url: '{{ route('pengeluaran.data') }}',
+                },
+                columns: [{
+                        data: 'DT_RowIndex',
+                        searchable: false,
+                        sortable: false
+                    },
+                    {
+                        data: 'created_at'
+                    },
+                    {
+                        data: 'deskripsi'
+                    },
+                    {
+                        data: 'nominal'
+                    },
+                    {
+                        data: 'aksi',
+                        searchable: false,
+                        sortable: false
+                    },
+                ]
             });
 
             $('#modal-form').validator().on('submit', function(e) {
@@ -107,40 +96,34 @@
 
         function addForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Tambah Produk');
+            $('#modal-form .modal-title').text('Tambah Pengeluaran');
             $('#modal-form .submit-text').text('Tambah');
 
             $('#modal-form form')[0].reset();
             $('#modal-form form').attr('action', url);
             $('#modal-form [name=_method]').val('post');
-            $('#modal-form [name=nama_produk]').focus();
+            $('#modal-form [name=deskripsi]').focus();
         }
 
         function editForm(url) {
             $('#modal-form').modal('show');
-            $('#modal-form .modal-title').text('Edit Produk');
+            $('#modal-form .modal-title').text('Edit Pengeluaran');
             $('#modal-form .submit-text').text('Edit');
 
-
             $('#modal-form form')[0].reset();
-        $('#modal-form form').attr('action', url);
-        $('#modal-form [name=_method]').val('put');
-        $('#modal-form [name=nama_produk]').focus();
+            $('#modal-form form').attr('action', url);
+            $('#modal-form [name=_method]').val('put');
+            $('#modal-form [name=deskripsi]').focus();
 
-        $.get(url)
-            .done((response) => {
-                $('#modal-form [name=nama_produk]').val(response.nama_produk);
-                $('#modal-form [name=id_kategori]').val(response.id_kategori);
-                $('#modal-form [name=merk]').val(response.merk);
-                $('#modal-form [name=harga_beli]').val(response.harga_beli);
-                $('#modal-form [name=harga_jual]').val(response.harga_jual);
-                $('#modal-form [name=diskon]').val(response.diskon);
-                $('#modal-form [name=stok]').val(response.stok);
-            })
-            .fail((errors) => {
-                alert('Tidak dapat menampilkan data');
-                return;
-            });
+            $.get(url)
+                .done((response) => {
+                    $('#modal-form [name=deskripsi]').val(response.deskripsi);
+                    $('#modal-form [name=nominal]').val(response.nominal);
+                })
+                .fail((errors) => {
+                    alert('Tidak dapat menampilkan data');
+                    return;
+                });
         }
 
         function deleteData(url) {
