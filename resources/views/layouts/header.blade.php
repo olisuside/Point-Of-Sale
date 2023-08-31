@@ -1,4 +1,4 @@
-{{-- <header class=''> --}}
+<header class=''>
     <nav class="navbar navbar-expand navbar-light navbar-top">
         <div class="container-fluid">
             <a href="#" class="burger-btn d-block">
@@ -104,4 +104,17 @@
         @csrf
     </form>
     {{-- Logout --}}
-{{-- </header> --}}
+</header>
+
+
+{{-- 
+<header class="mb-3">
+    <a href="#" class="burger-btn d-block d-xl-none">
+        <i class="bi bi-justify fs-3"></i>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</header> --}}
