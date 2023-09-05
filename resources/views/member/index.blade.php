@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-
+@includeIf('member.form')
     </section>
 @endsection
 @push('scripts')
@@ -57,16 +57,7 @@
                     ajax: {
                         url: '{{ route('member.data') }}',
                     },
-                    columns: [{
-                            data: 'select_all',
-                            searchable: false,
-                            sortable: false
-                        },
-                        {
-                            data: 'DT_RowIndex',
-                            searchable: false,
-                            sortable: false
-                        },
+                    columns: [
                         {
                             data: 'kode_member'
                         },
@@ -102,5 +93,39 @@
                 });
 
             });
+
+            function addForm(url) {
+        $('#modal-form').modal('show');
+        $('#modal-form .modal-title').text('Tambah Member');
+        $('#modal-form .submit-text').text('Tambah');
+
+        $('#modal-form form')[0].reset();
+        $('#modal-form form').attr('action', url);
+        $('#modal-form [name=_method]').val('post');
+        $('#modal-form [name=nama]').focus();
+    }
+
+    function editForm(url) {
+        $('#modal-form').modal('show');
+        $('#modal-form .modal-title').text('Edit Member');
+        $('#modal-form .submit-text').text('Edit');
+
+        $('#modal-form form')[0].reset();
+        $('#modal-form form').attr('action', url);
+        $('#modal-form [name=_method]').val('put');
+        $('#modal-form [name=nama]').focus();
+
+        $.get(url)
+            .done((response) => {
+                $('#modal-form [name=nama]').val(response.nama);
+                $('#modal-form [name=telepon]').val(response.telepon);
+                $('#modal-form [name=alamat]').val(response.alamat);
+            })
+            .fail((errors) => {
+                alert('Tidak dapat menampilkan data');
+                return;
+            });
+    }
+
 </script>
 @endpush

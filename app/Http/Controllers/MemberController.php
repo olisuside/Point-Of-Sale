@@ -25,15 +25,15 @@ class MemberController extends Controller
 
         return datatables()
             ->of($member)
-            
+            ->addIndexColumn()
             ->addColumn('kode_member', function ($member) {
                 return '<span class="label label-success">'. $member->kode_member .'<span>';
             })
             ->addColumn('aksi', function ($member) {
                 return '
                 <div class="btn-group">
-                    <button type="button" onclick="editForm(`'. route('member.update', $member->id_member) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-pencil"></i></button>
-                    <button type="button" onclick="deleteData(`'. route('member.destroy', $member->id_member) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                    <button type="button" onclick="editForm(`'. route('member.update', $member->id_member) .'`)" class="btn btn-sm btn-success"><i class="bi bi-pencil"></i></button>
+                    <button type="button" onclick="deleteData(`'. route('member.destroy', $member->id_member) .'`)" class="btn btn-sm btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
                 </div>
                 ';
             })
@@ -55,7 +55,18 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $member = Member::latest()->first() ?? new Member();
+        $kode_member = (int) $member->kode_member +1;
+
+        $member = new Member();
+        $member->kode_member = tambah_nol_didepan($kode_member, 5);
+        $member->nama = $request->nama;
+        $member->telepon = $request->telepon;
+        $member->alamat = $request->alamat;
+        $member->save();
+
+        return redirect()->route('member.index')->with('success','Member has been created successfully.');
+
     }
 
     /**
@@ -63,7 +74,10 @@ class MemberController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $member = Member::find($id);
+
+        return response()->json($member);
+
     }
 
     /**
@@ -79,7 +93,10 @@ class MemberController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $member = Member::find($id)->update($request->all());
+
+        return redirect()->route('member.index')->with('success','Member has been update successfully.');
+
     }
 
     /**
@@ -87,6 +104,9 @@ class MemberController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $member = Member::find($id);
+        $member->delete();
+
+        return redirect()->route('member.index')->with('success','Member has been delete successfully.');
     }
 }
