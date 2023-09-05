@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\PembelianDetailController;
 use App\Http\Controllers\PengeluaranController;
@@ -27,7 +28,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::resource('dashboard',DashboardController::class);
+    Route::resource('dashboard', DashboardController::class);
 
     Route::get('/kategori/data', [KategoriController::class, 'data'])->name('kategori.data');
     Route::resource('/kategori', KategoriController::class);
@@ -44,13 +45,15 @@ Route::middleware([
     Route::get('/pembelian/data', [PembelianController::class, 'data'])->name('pembelian.data');
     Route::get('/pembelian/{id}/create', [PembelianController::class, 'create'])->name('pembelian.create');
     Route::resource('/pembelian', PembelianController::class)
-            ->except('create');
+        ->except('create');
 
     Route::get('/pembelian_detail/{id}/data', [PembelianDetailController::class, 'data'])->name('pembelian_detail.data');
     Route::get('/pembelian_detail/loadform/{diskon}/{total}', [PembelianDetailController::class, 'loadForm'])->name('pembelian_detail.load_form');
     Route::resource('/pembelian_detail', PembelianDetailController::class)
-            ->except('create', 'show', 'edit');
+        ->except('create', 'show', 'edit');
 
+    Route::get('/member/data', [MemberController::class, 'data'])->name('member.data');
+    Route::resource('/member', MemberController::class);
 });
 
 // Route::group(['middleware' => 'Auth'], function(){

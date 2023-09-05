@@ -94,7 +94,7 @@
 
                 <li class="sidebar-item">
                     <a href="{{ url('kategori') }}" class='sidebar-link'>
-                        <i class="bi bi-box-fill"></i>
+                        <i class="bi bi-box"></i>
                         <span>Kategori</span>
                     </a>
                 </li>
@@ -109,6 +109,12 @@
                     <a href="{{ url('supplier') }}" class='sidebar-link'>
                         <i class="bi bi-truck"></i>
                         <span>Supplier</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ url('member') }}" class='sidebar-link'>
+                        <i class="bi bi-person"></i>
+                        <span>Member</span>
                     </a>
                 </li>
             </ul>
