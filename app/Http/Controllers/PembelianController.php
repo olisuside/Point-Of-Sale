@@ -22,7 +22,7 @@ class PembelianController extends Controller
 
     public function data()
     {
-        $pembelian = pembelian::orderBy('id_pembelian', 'desc')->get();
+        $pembelian = pembelian::orderBy('id_pembelian', 'desc')->where('total_item', '>', 0)->get();
 
         return datatables()
             ->of($pembelian)

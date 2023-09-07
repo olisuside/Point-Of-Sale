@@ -64,7 +64,7 @@
                             <a href="#" class="submenu-link">Transaksi Aktif</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="#" class="submenu-link">Detail</a>
+                            <a href="{{ url('penjualan') }}" class="submenu-link">Data Penjualan</a>
                         </li>
                     </ul>
                 </li>
