@@ -62,7 +62,7 @@ class PembelianController extends Controller
             } else {
                 return '
                 <div class="btn-group">
-                    <button onclick="showDetail(`' . route('pembelian.show', $pembelian->id_pembelian) . '`)" class="btn btn-sm btn-warning btn-flat"><i class="bi bi-pencil"></i></button>
+                    <button onclick="window.location.href=`' . route('pembelian.edit', $pembelian->id_pembelian) . '`" class="btn btn-sm btn-warning btn-flat"><i class="bi bi-pencil"></i></button>
                     <button onclick="deleteData(`' . route('pembelian.destroy', $pembelian->id_pembelian) . '`)" class="btn btn-sm btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
                 </div>
                 ';
@@ -146,9 +146,13 @@ class PembelianController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $pembelian = Pembelian::find($id);
+        session(['id_pembelian' => $pembelian->id_pembelian]);
+        session(['id_supplier' => $pembelian->id_supplier]);
+
+        return redirect()->route('pembelian_detail.index');
     }
 
     /**
