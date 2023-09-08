@@ -22,7 +22,7 @@ class PembelianController extends Controller
 
     public function data()
     {
-        $pembelian = pembelian::orderBy('id_pembelian', 'desc')->where('total_item', '>', 0)->get();
+        $pembelian = pembelian::orderBy('id_pembelian', 'desc')->get();
 
         return datatables()
             ->of($pembelian)
@@ -31,10 +31,10 @@ class PembelianController extends Controller
                 return format_uang($pembelian->total_item);
             })
             ->addColumn('total_harga', function ($pembelian) {
-                return 'Rp. '. format_uang($pembelian->total_harga);
+                return 'Rp. ' . format_uang($pembelian->total_harga);
             })
             ->addColumn('bayar', function ($pembelian) {
-                return 'Rp. '. format_uang($pembelian->bayar);
+                return 'Rp. ' . format_uang($pembelian->bayar);
             })
             ->addColumn('tanggal', function ($pembelian) {
                 return tanggal_indonesia($pembelian->created_at, false);
@@ -45,15 +45,21 @@ class PembelianController extends Controller
             ->editColumn('diskon', function ($pembelian) {
                 return $pembelian->diskon . '%';
             })
+            ->addColumn('status', function ($pembelian) {
+                $badgeClass = $pembelian->status == 1 ? 'bg-success' : 'bg-danger';
+                $statusText = $pembelian->status == 1 ? 'Lunas' : 'Belum Lunas';
+
+                return '<span class="badge ' . $badgeClass . '">' . $statusText . '</span>';
+            })
             ->addColumn('aksi', function ($pembelian) {
                 return '
                 <div class="btn-group">
-                    <button onclick="showDetail(`'. route('pembelian.show', $pembelian->id_pembelian) .'`)" class="btn btn-xs btn-primary btn-flat"><i class="bi bi-eye"></i></button>
-                    <button onclick="deleteData(`'. route('pembelian.destroy', $pembelian->id_pembelian) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
+                    <button onclick="showDetail(`' . route('pembelian.show', $pembelian->id_pembelian) . '`)" class="btn btn-xs btn-primary btn-flat"><i class="bi bi-eye"></i></button>
+                    <button onclick="deleteData(`' . route('pembelian.destroy', $pembelian->id_pembelian) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
                 </div>
                 ';
             })
-            ->rawColumns(['aksi'])
+            ->rawColumns(['aksi', 'status'])
             ->make(true);
     }
     /**
@@ -67,6 +73,7 @@ class PembelianController extends Controller
         $pembelian->total_harga = 0;
         $pembelian->diskon      = 0;
         $pembelian->bayar       = 0;
+        $pembelian->status       = 0;
         $pembelian->save();
 
         session(['id_pembelian' => $pembelian->id_pembelian]);
@@ -85,6 +92,7 @@ class PembelianController extends Controller
         $pembelian->total_harga = $request->total;
         $pembelian->diskon = $request->diskon;
         $pembelian->bayar = $request->bayar;
+        $pembelian->status = 1;
         $pembelian->update();
 
         $detail = PembelianDetail::where('id_pembelian', $pembelian->id_pembelian)->get();
@@ -108,19 +116,19 @@ class PembelianController extends Controller
             ->of($detail)
             ->addIndexColumn()
             ->addColumn('kode_produk', function ($detail) {
-                return '<span class="label label-success">'. $detail->produk->kode_produk .'</span>';
+                return '<span class="label label-success">' . $detail->produk->kode_produk . '</span>';
             })
             ->addColumn('nama_produk', function ($detail) {
                 return $detail->produk->nama_produk;
             })
             ->addColumn('harga_beli', function ($detail) {
-                return 'Rp. '. format_uang($detail->harga_beli);
+                return 'Rp. ' . format_uang($detail->harga_beli);
             })
             ->addColumn('jumlah', function ($detail) {
                 return format_uang($detail->jumlah);
             })
             ->addColumn('subtotal', function ($detail) {
-                return 'Rp. '. format_uang($detail->subtotal);
+                return 'Rp. ' . format_uang($detail->subtotal);
             })
             ->rawColumns(['kode_produk'])
             ->make(true);

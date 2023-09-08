@@ -38,6 +38,7 @@
                                         <th>Total Harga</th>
                                         <th>Diskon</th>
                                         <th>Total Bayar</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -85,6 +86,9 @@
                     },
                     {
                         data: 'bayar'
+                    },
+                    {
+                        data: 'status'
                     },
                     {
                         data: 'aksi',
