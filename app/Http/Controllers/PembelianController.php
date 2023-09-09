@@ -46,13 +46,13 @@ class PembelianController extends Controller
                 return $pembelian->diskon . '%';
             })
             ->addColumn('status', function ($pembelian) {
-                $badgeClass = $pembelian->status == 1 ? 'bg-success' : 'bg-danger';
-                $statusText = $pembelian->status == 1 ? 'Lunas' : 'Belum Lunas';
+                $badgeClass = $pembelian->status == 'paid' ? 'bg-success' : 'bg-danger';
+                $statusText = $pembelian->status == 'paid' ? 'Lunas' : 'Belum Lunas';
 
                 return '<span class="badge ' . $badgeClass . '">' . $statusText . '</span>';
             })
             ->addColumn('aksi', function ($pembelian) {
-                if ($pembelian->status == 1) {
+                if ($pembelian->status == 'paid') {
                 return '
                 <div class="btn-group">
                     <button onclick="showDetail(`' . route('pembelian.show', $pembelian->id_pembelian) . '`)" class="btn btn-sm btn-primary btn-flat"><i class="bi bi-eye"></i></button>
@@ -82,7 +82,7 @@ class PembelianController extends Controller
         $pembelian->total_harga = 0;
         $pembelian->diskon      = 0;
         $pembelian->bayar       = 0;
-        $pembelian->status       = 0;
+        $pembelian->status       = 'unpaid';
         $pembelian->save();
 
         session(['id_pembelian' => $pembelian->id_pembelian]);
@@ -101,7 +101,7 @@ class PembelianController extends Controller
         $pembelian->total_harga = $request->total;
         $pembelian->diskon = $request->diskon;
         $pembelian->bayar = $request->bayar;
-        $pembelian->status = 1;
+        $pembelian->status = 'paid';
         $pembelian->update();
 
         $detail = PembelianDetail::where('id_pembelian', $pembelian->id_pembelian)->get();

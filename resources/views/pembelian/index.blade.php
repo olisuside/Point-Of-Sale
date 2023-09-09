@@ -70,7 +70,8 @@
                     url: '{{ route('pembelian.data') }}',
                 },
                 columns: [{
-                        data: 'tanggal'
+                        data: 'tanggal',
+                        sortable: false
                     },
                     {
                         data: 'supplier'

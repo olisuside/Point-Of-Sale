@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('pembelian', function (Blueprint $table) {
-            $table->tinyInteger('status')
-            ->default(0)
+            $table->enum('status', ['paid', 'unpaid'])
             ->after('total_harga');
         });
     }
