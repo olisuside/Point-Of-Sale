@@ -58,10 +58,10 @@
                     </a>
                     <ul class="submenu submenu-open" style="--submenu-height: 731px;">
                         <li class="submenu-item">
-                            <a href="#" class="submenu-link">Transaksi Baru</a>
+                            <a href="{{ route('transaksi.baru') }}" class="submenu-link">Transaksi Baru</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="#" class="submenu-link">Transaksi Aktif</a>
+                            <a href="{{ route('transaksi.index') }}" class="submenu-link">Transaksi Aktif</a>
                         </li>
                         <li class="submenu-item">
                             <a href="{{ url('penjualan') }}" class="submenu-link">Data Penjualan</a>
