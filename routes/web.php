@@ -8,6 +8,7 @@ use App\Http\Controllers\PembelianDetailController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,12 @@ Route::middleware([
     Route::get('/penjualan/{id}', [PenjualanController::class, 'show'])->name('penjualan.show');
     Route::delete('/penjualan/{id}', [PenjualanController::class, 'destroy'])->name('penjualan.destroy');
 
+
+
+
+    Route::get('/setting', [SettingController::class, 'index'])->name('setting.index');
+        Route::get('/setting/first', [SettingController::class, 'show'])->name('setting.show');
+        Route::post('/setting', [SettingController::class, 'update'])->name('setting.update');
 });
 
 // Route::group(['middleware' => 'Auth'], function(){

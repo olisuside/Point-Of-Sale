@@ -129,7 +129,7 @@
                 </li>
 
                 <li class="sidebar-item  ">
-                    <a href="index.html" class='sidebar-link'>
+                    <a href="{{url('setting')}}" class='sidebar-link'>
                         <i class="bi bi-gear-fill"></i>
                         <span>Pengaturan Toko</span>
                     </a>
