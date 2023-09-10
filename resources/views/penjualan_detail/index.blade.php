@@ -74,7 +74,7 @@
                                     <input type="text" class="form-control" name="kode_produk" id="kode_produk">
                                     <span class="input-group-btn">
                                         <button onclick="tampilProduk()" class="btn btn-info btn-flat" type="button"><i
-                                                class="fa fa-arrow-right"></i></button>
+                                                class="bi bi-arrow-right"></i></button>
                                     </span>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="kode_member" value="{{ $memberSelected->kode_member }}">
                                             <span class="input-group-btn">
-                                                <button onclick="tampilMember()" class="btn btn-info btn-flat" type="button"><i class="fa fa-arrow-right"></i></button>
+                                                <button onclick="tampilMember()" class="btn btn-info btn-flat" type="button"><i class="bi bi-arrow-right"></i></button>
                                             </span>
                                         </div>
                                     </div>
