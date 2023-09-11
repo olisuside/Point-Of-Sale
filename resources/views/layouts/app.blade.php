@@ -8,15 +8,15 @@
     
     <title>{{ config('app.name') }} | @yield('title')</title>
 
-    <link rel="stylesheet" href="assets/css/main/app.css">
-    <link rel="stylesheet" href="assets/css/main/app-dark.css">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+    <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main/app-dark.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.svg" type="image/x-icon') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png" type="image/png') }}">
 
-    <link rel="stylesheet" href="assets/css/shared/iconly.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
 
-    <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="assets/css/pages/datatables.css">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/datatables.css') }}">
 
     @stack('css')
 </head>
@@ -54,17 +54,17 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
     <!-- Need: Apexcharts -->
-    <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 
     <!-- jquery -->
-    <script src="assets/extensions/jquery/jquery.min.js"></script>
+    <script src="{{ asset('assets/extensions/jquery/jquery.min.js') }}"></script>
     <!-- datatable -->
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
+    <script src="{{ asset('https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js') }}"></script>
     {{-- <script src="assets/js/pages/datatables.js"></script> --}}
 
 

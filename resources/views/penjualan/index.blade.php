@@ -59,7 +59,8 @@
                     url: '{{ route('penjualan.data') }}',
                 },
                 columns: [{
-                        data: 'tanggal'
+                        data: 'tanggal',
+                        sortable: false
                     },
                     {
                         data: 'kode_member'
