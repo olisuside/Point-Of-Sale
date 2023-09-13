@@ -125,6 +125,17 @@
                                         <input type="text" id="bayarrp" class="form-control">
                                     </div>
                                 </div>
+
+                                {{-- <div class="form-group row">
+                                    <div class="col-lg-4"></div>
+                                    <div class="form-check col-lg-8">
+                                    <div class=" checkbox">
+                                        <input type="checkbox" id="lunas" class="form-check-input">
+                                        <label for="lunas">Dibayar</label>
+                                    </div>
+                                </div>
+                                </div> --}}
+
                             </form>
                             <div class="">
                                 <button type="submit" class="btn btn-primary btn-sm btn-flat pull-right btn-simpan col-12"><i
