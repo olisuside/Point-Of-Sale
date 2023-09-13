@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# Laravel Point-Of-Sale
+# Laravel Point-Of-Sale (Bahasa Indonesia)
 
 This is a point of sales website project using Laravel 10 with the Mazer Admin template
 
