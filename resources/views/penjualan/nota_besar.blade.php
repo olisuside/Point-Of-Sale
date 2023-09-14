@@ -33,9 +33,6 @@
             <td rowspan="4" width="60%">
                 <img src="{{ public_path($setting->path_logo) }}" alt="{{ $setting->path_logo }}" width="120">
                 <br>
-                {{ $setting->nama_perusahaan }}
-                <br>
-                <br>
                 {{ $setting->alamat }}
                 <br>
                 <br>

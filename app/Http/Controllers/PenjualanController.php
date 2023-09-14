@@ -44,23 +44,38 @@ class PenjualanController extends Controller
             })
             ->addColumn('kode_member', function ($penjualan) {
                 $member = $penjualan->member->kode_member ?? '';
-                return '<span class="label label-success">'. $member .'</spa>';
+                return '<span class="badge bg-success">'. $member .'</spa>';
             })
             ->editColumn('diskon', function ($penjualan) {
                 return $penjualan->diskon . '%';
+            })
+            ->addColumn('status', function ($penjualan) {
+                $badgeClass = $penjualan->status == 'paid' ? 'bg-success' : 'bg-danger';
+                $statusText = $penjualan->status == 'paid' ? 'Lunas' : 'Belum Lunas';
+
+                return '<span class="badge ' . $badgeClass . '">' . $statusText . '</span>';
             })
             ->editColumn('kasir', function ($penjualan) {
                 return $penjualan->user->name ?? '';
             })
             ->addColumn('aksi', function ($penjualan) {
-                return '
+                if ($penjualan->status == 'paid') {
+                    return '
                 <div class="btn-group">
                     <button onclick="showDetail(`'. route('penjualan.show', $penjualan->id_penjualan) .'`)" class="btn btn-xs btn-primary btn-flat"><i class="bi bi-eye"></i></button>
                     <button onclick="deleteData(`'. route('penjualan.destroy', $penjualan->id_penjualan) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
                 </div>
-                ';
+                ';}
+                else{
+                    return '
+                    <div class="btn-group">
+                        <button onclick="window.location.href=`' . route('transaksi.edit', $penjualan->id_penjualan) . '`" class="btn btn-sm btn-warning btn-flat"><i class="bi bi-pencil"></i></button>
+                        <button onclick="deleteData(`' . route('penjualan.destroy', $penjualan->id_penjualan) . '`)" class="btn btn-sm btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
+                    </div>
+                    ';
+                }
             })
-            ->rawColumns(['aksi', 'kode_member'])
+            ->rawColumns(['aksi', 'kode_member', 'status'])
             ->make(true);
     }
 
@@ -76,6 +91,7 @@ class PenjualanController extends Controller
         $penjualan->diskon = 0;
         $penjualan->bayar = 0;
         $penjualan->diterima = 0;
+        $penjualan->status = 'unpaid';
         $penjualan->id_user = auth()->id();
         $penjualan->save();
 
@@ -95,6 +111,7 @@ class PenjualanController extends Controller
         $penjualan->diskon = $request->diskon;
         $penjualan->bayar = $request->bayar;
         $penjualan->diterima = $request->diterima;
+        $penjualan->status = 'paid';
         $penjualan->update();
 
         $detail = PenjualanDetail::where('id_penjualan', $penjualan->id_penjualan)->get();
@@ -142,9 +159,11 @@ class PenjualanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $penjualan = Penjualan::find($id);
+        session(['id_penjualan' => $penjualan->id_penjualan]);
+        return redirect()->route('transaksi.index');
     }
 
     /**

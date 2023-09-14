@@ -16,6 +16,12 @@
                                 Transaksi Selesai
                             </div>
                             <div class="col-12 d-flex justify-content-end">
+                                <a type="" class="btn btn-secondary me-1 mb-1" href="{{ url('penjualan') }}">
+                                    Kembali
+                                  </a>
+                                <a type="" class="btn btn-primary me-1 mb-1" href="{{ route('transaksi.baru') }}">
+                                    Transaksi Baru
+                                  </a>
                                 @if ($setting->tipe_nota == 1)
                                 <button type="" class="btn btn-primary me-1 mb-1" onclick="notaKecil('{{ route('transaksi.nota_kecil') }}', 'Nota Kecil')">
                                   Cetak Nota k
