@@ -14,15 +14,17 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         $users = array(
-            // [
-            //     'name' => 'Administrator',
-            //     'email' => 'admin@gmail.com',
-            //     'password' => bcrypt('admin12345'),
-            //     'foto' => '/img/user.jpg',
-            //     'level' => 0
-            // ],
+            [
+                'name' => 'Administrator',
+                'username' => 'Administrator',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('admin12345'),
+                'foto' => '/img/user.jpg',
+                'level' => 0
+            ],
             [
                 'name' => 'Kasir 1',
+                'username' => 'Kasir 1',
                 'email' => 'kasir1@gmail.com',
                 'password' => bcrypt('kasir12345'),
                 'foto' => '/img/user.jpg',
