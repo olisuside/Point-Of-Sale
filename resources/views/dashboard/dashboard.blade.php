@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-6 col-lg-3 col-md-6">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="col-6 col-lg-3 col-md-6">
             <div class="card">
                 <div class="card-body px-4 py-4-5">
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     {{-- Chart --}}
@@ -84,10 +84,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Data Penjualan Bulanan</h4>
+                    <h4>Line Area Chart</h4>
                 </div>
                 <div class="card-body">
-                    <div id="chart-sales-data"></div>
+                    <div id="salesChart"></div>
                 </div>
             </div>
         </div>
@@ -95,3 +95,63 @@
     {{-- End Chart --}}
 
 @endsection
+
+@push('scripts')
+    <!-- ChartJS -->
+    <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
+    <script>
+        $(function() {
+            var options = {
+                series: [{
+                        name: "Pendapatan",
+                        data: {{ json_encode($data_pendapatan) }}
+                    },
+                    {
+                        name: "Penjualan",
+                        data: {{ json_encode($data_penjualan) }}
+                    },
+                    {
+                        name: "Pembelian",
+                        data: {{ json_encode($data_pembelian) }}
+                    },
+                ],
+                chart: {
+                    height: 350,
+                    type: "area",
+                    toolbar: {
+                        show: true,
+                        tools: {
+                            download: false,
+                            selection: false,
+                            zoom: true,
+                            zoomin: true,
+                            zoomout: true,
+                            pan:true,
+                        },
+                    },
+                },
+                xaxis: {
+                    type: "datetime",
+                    categories: <?php echo json_encode($data_tanggal); ?>,
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                stroke: {
+                    curve: "smooth",
+                },
+                tooltip: {
+                    x: {
+                        format: "dd/MM/yy",
+                    },
+                },
+
+            };
+
+            var chart = new ApexCharts(document.querySelector("#salesChart"), options);
+
+            // Render the chart
+            chart.render();
+        });
+    </script>
+@endpush
