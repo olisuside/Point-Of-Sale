@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Pemasukkan</h6>
-                            <h6 class="font-extrabold mb-0">Rp. 183.000</h6>
+                            <h6 class="font-extrabold mb-0">Rp. {{ format_uang($jumlah_penjualan) }}</h6>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                             <h6 class="text-muted font-semibold">Pengeluaran</h6>
-                            <h6 class="font-extrabold mb-0">Rp. 80.000</h6>
+                            <h6 class="font-extrabold mb-0">Rp. {{ format_uang($jumlah_pengeluaran) }}</h6>
                         </div>
                     </div>
                 </div>
