@@ -122,7 +122,7 @@
                 <li class="sidebar-title">Pengaturan</li>
 
                 <li class="sidebar-item">
-                    <a href="index.html" class='sidebar-link'>
+                    <a href="{{ url('user') }}" class='sidebar-link'>
                         <i class="bi bi-person"></i>
                         <span>Pengaturan Akun</span>
                     </a>
