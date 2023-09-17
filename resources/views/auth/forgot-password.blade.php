@@ -1,34 +1,58 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+@extends('layouts.auth')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@section('title', 'Login')
+
+@section('contents')
+
+    <div class="card mt-2">
+        <div class="card-content">
+            <div class="card-body">
+                <h3 class="" style="text-align: center">Masukkan Email Anda</h3>
+                @if ($errors->any())
+                    <div class="alert alert-danger">Whoops! Something went wrong
+
+                        <ul class="">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                {{-- <p class="card-text my-3" style="text-align: center">asd</p> --}}
+
+                <form method="POST" action="{{ route('password.email') }}">
+                    @csrf
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="col-form-label">Email</label>
+                            </div>
+                            <div class="col-md-9 form-group">
+                                <input id="email" class="form-control" type="email" name="email"
+                                    :value="old('email')" required autofocus autocomplete="username">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions col-sm-12 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary me-1 mb-1 mt-2">
+                            Reset Password
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
+    </div>
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
 
-        <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
 
-            <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+@endsection
