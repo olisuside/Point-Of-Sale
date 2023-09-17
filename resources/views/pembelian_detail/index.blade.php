@@ -211,11 +211,11 @@
                 let id = $(this).data('id');
                 let jumlah = parseInt($(this).val());
 
-                if (jumlah < 1) {
-                    $(this).val(1);
-                    alert('Jumlah tidak boleh kurang dari 1');
-                    return;
-                }
+                // if (jumlah < 1) {
+                //     $(this).val(1);
+                //     alert('Jumlah tidak boleh kurang dari 1');
+                //     return;
+                // }
                 if (jumlah > 10000) {
                     $(this).val(10000);
                     alert('Jumlah tidak boleh lebih dari 10000');
@@ -311,7 +311,25 @@
                     return;
                 })
         }
+        function checkValue(input) {
+            var newValue = parseInt(input.value);
+            var feedbackDiv = document.getElementById('feedback');
 
+            if(newValue < 0) {
+                input.value = 0; // Jika jumlah melebihi stok, ubah nilainya menjadi stok maksimum
+                feedbackDiv.className = 'invalid-feedback';
+                input.className = 'form-control input-sm quantity is-invalid'
+               ;
+                // Menambahkan teks pesan pada div "feedback"
+                feedbackDiv.innerHTML = 'Jumlah tidak boleh kurang dari 0' ;
+
+            } 
+            else {
+                // Jika jumlah valid, hapus class "invalid" dan teks pesan pada div "feedback"
+                feedbackDiv.className = '';
+                feedbackDiv.innerHTML = '';
+            }
+        }
   
     </script>
 @endpush
