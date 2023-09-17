@@ -59,7 +59,7 @@
         // });
 
 
-        let able;
+        let table;
 
         $(function() {
             table = $('#table2').DataTable({
