@@ -75,16 +75,17 @@
                         <span>Pembelian</span>
                     </a>
                 </li>
-                <li class="sidebar-item  ">
-                    <a href="index.html" class='sidebar-link'>
-                        <i class="bi bi-clipboard-pulse"></i>
-                        <span>Riwayat Transaksi</span>
-                    </a>
-                </li>
+                
                 <li class="sidebar-item">
                     <a href="{{ url('pengeluaran') }}" class='sidebar-link'>
                         <i class="bi bi-cash-coin"></i>
                         <span>Pengeluaran</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  ">
+                    <a href="{{ url('laporan')}}" class='sidebar-link'>
+                        <i class="bi bi-clipboard-pulse"></i>
+                        <span>Laporan</span>
                     </a>
                 </li>
             </ul>

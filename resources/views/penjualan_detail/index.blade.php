@@ -143,9 +143,13 @@
                                 </div>
                                 <div class="form-group row">
                                     <label for="diterima" class="col-lg-2 control-label">Diterima</label>
-                                    <div class="col-lg-8">
-                                        <input type="number" id="diterima" class="form-control" name="diterima"
+                                    <div class="col-lg-8 ">
+                                        <div class="input-group">
+
+                                            <span class="input-group-text" id="">Rp. </span>
+                                            <input type="number" id="diterima" class="form-control" name="diterima"
                                             value="{{ $penjualan->diterima ?? 0 }}">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -360,10 +364,19 @@
                     $('.tampil-terbilang').text(response.terbilang);
 
                     $('#kembali').val('Rp.' + response.kembalirp);
-                    if ($('#diterima').val() != 0) {
+
+                    if (response.kembalirp < 0 || $('#diterima').val() <= 0) {
+                        $('.btn-simpan').prop('disabled', true);
+                    } else {
+                        $('.btn-simpan').prop('disabled', false);
                         $('.tampil-bayar').text('Kembali: Rp. ' + response.kembalirp);
                         $('.tampil-terbilang').text(response.kembali_terbilang);
                     }
+
+                    // if ($('#diterima').val() != 0) {
+                    //     $('.tampil-bayar').text('Kembali: Rp. ' + response.kembalirp);
+                    //     $('.tampil-terbilang').text(response.kembali_terbilang);
+                    // }
                 })
                 .fail(errors => {
                     alert('Tidak dapat menampilkan data');
@@ -379,21 +392,18 @@
             if (newValue > maxStock) {
                 input.value = maxStock; // Jika jumlah melebihi stok, ubah nilainya menjadi stok maksimum
                 feedbackDiv.className = 'invalid-feedback';
-                input.className = 'form-control input-sm quantity is-invalid'
-               ;
+                input.className = 'form-control input-sm quantity is-invalid';
                 // Menambahkan teks pesan pada div "feedback"
-                feedbackDiv.innerHTML = 'Jumlah melebihi stok produk. Sisa stok = ' + maxStock ;
-                
-            } else if(newValue < 0) {
+                feedbackDiv.innerHTML = 'Jumlah melebihi stok produk. Sisa stok = ' + maxStock;
+
+            } else if (newValue < 0) {
                 input.value = 0; // Jika jumlah melebihi stok, ubah nilainya menjadi stok maksimum
                 feedbackDiv.className = 'invalid-feedback';
-                input.className = 'form-control input-sm quantity is-invalid'
-               ;
+                input.className = 'form-control input-sm quantity is-invalid';
                 // Menambahkan teks pesan pada div "feedback"
-                feedbackDiv.innerHTML = 'Jumlah tidak boleh kurang dari 0' ;
+                feedbackDiv.innerHTML = 'Jumlah tidak boleh kurang dari 0';
 
-            } 
-            else {
+            } else {
                 // Jika jumlah valid, hapus class "invalid" dan teks pesan pada div "feedback"
                 feedbackDiv.className = '';
                 feedbackDiv.innerHTML = '';
