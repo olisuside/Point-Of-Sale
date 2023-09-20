@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Kategori')
+@section('title', 'Laporan')
 @push('css')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     
@@ -12,7 +12,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <h4>Data Kategori</h4>
+                            <h4>Laporan Transaksi</h4>
                             <div class="btn-group">
                                 <a class="btn btn-sm btn-primary" title="Ubah Periode" onclick="updatePeriode()"><i
                                         class="bi bi-calendar-date"></i> Ubah Periode</a>
