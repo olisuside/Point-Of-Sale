@@ -159,12 +159,25 @@
                                             value="0" readonly>
                                     </div>
                                 </div>
-                            </form>
+                                <div class="form-group row">
+
+                                    <div class="btn-group">
+                                        <input type="radio" class="btn-check" name="options-outlined" id="primary-outlined"
+                                        autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="primary-outlined">Cashless</label>
+                                        
+                                        <input type="radio" class="btn-check" name="options-outlined" id="second-outlined"
+                                        autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="second-outlined">Cash</label>
+                                    </div>
+                                </div>
+                            
                             <div class="">
                                 <button type="submit"
                                     class="btn btn-primary btn-sm btn-flat pull-right btn-simpan col-12"><i
                                         class="fa fa-floppy-o"></i> Simpan Transaksi</button>
                             </div>
+                        </form>
                         </div>
                     </div>
 
