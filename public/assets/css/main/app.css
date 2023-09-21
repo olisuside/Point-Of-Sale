@@ -4101,7 +4101,7 @@ fieldset:disabled .btn {
 
 .dropdown-menu-end[data-bs-popper] {
     left: auto;
-    right: 0
+    right: auto;
 }
 
 @media (min-width:576px) {
@@ -5617,7 +5617,11 @@ fieldset:disabled .btn {
 .badge:empty {
     display: none
 }
-
+.badge-notification {
+    position: absolute;
+    right: 20px;
+    padding: 3px;
+}
 .btn .badge {
     position: relative;
     top: -1px
@@ -21659,15 +21663,15 @@ body .bi:before {
 .navbar-top .notification-icon {
     border-radius: 50%;
     color: #fff;
-    height: 40px;
+    height: 34px;
     text-align: center;
     vertical-align: middle;
-    width: 40px
+    width: 34px
 }
 
 .navbar-top .notification-icon i {
     font-size: 20px;
-    vertical-align: -moz-middle-with-baseline
+    vertical-align: middle;
 }
 
 .layout-horizontal .header-top {

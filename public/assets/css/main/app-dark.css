@@ -5278,6 +5278,12 @@ body.theme-dark .badge {
     white-space: nowrap
 }
 
+body.theme-dark .badge-notification {
+    position: absolute;
+    right: 20px;
+    padding: 3px;
+}
+
 body.theme-dark .badge:empty {
     display: none
 }
@@ -8859,15 +8865,16 @@ body.theme-dark .navbar-top .notification-item p {
 body.theme-dark .navbar-top .notification-icon {
     border-radius: 50%;
     color: #fff;
-    height: 40px;
+    height: 34px;
     text-align: center;
     vertical-align: middle;
-    width: 40px
+    width: 34px
 }
 
 body.theme-dark .navbar-top .notification-icon i {
     font-size: 20px;
-    vertical-align: -moz-middle-with-baseline
+    vertical-align: middle;
+    
 }
 
 body.theme-dark .layout-horizontal .header-top {
