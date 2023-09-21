@@ -83,8 +83,10 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <h4>Line Area Chart</h4>
+                <div class="card-header d-flex justify-content-between">
+                    <h4>Grafik Penjualan</h4>
+                    <a class="btn btn-sm btn-primary" title="Ubah Periode" onclick="updatePeriode()"><i
+                            class="bi bi-calendar-date"></i> Ubah Periode</a>
                 </div>
                 <div class="card-body">
                     <div id="salesChart"></div>
@@ -93,6 +95,8 @@
         </div>
     </div>
     {{-- End Chart --}}
+
+    @includeIf('dashboard.form')
 
 @endsection
 
@@ -103,18 +107,18 @@
         $(function() {
             var options = {
                 series: [{
-                        name: "Pendapatan",
-                        data: {{ json_encode($data_pendapatan) }}
-                    },
-                    {
-                        name: "Penjualan",
-                        data: {{ json_encode($data_penjualan) }}
-                    },
-                    {
-                        name: "Pembelian",
-                        data: {{ json_encode($data_pembelian) }}
-                    },
-                ],
+                    name: "Pendapatan",
+                    data: {{ json_encode($data['data_pendapatan']) }}
+                },
+                {
+                    name: "Penjualan",
+                    data:  JSON.parse('<?= json_encode($data['data_penjualan']) ?>')
+                },
+                {
+                    name: "Pembelian",
+                    data: {{ json_encode($data['data_pembelian']) }}
+                },
+            ],
                 chart: {
                     height: 350,
                     type: "area",
@@ -126,13 +130,13 @@
                             zoom: true,
                             zoomin: true,
                             zoomout: true,
-                            pan:true,
+                            pan: true,
                         },
                     },
                 },
                 xaxis: {
                     type: "datetime",
-                    categories: <?php echo json_encode($data_tanggal); ?>,
+                    categories: JSON.parse('<?= json_encode($data['data_tanggal']) ?>'),
                 },
                 dataLabels: {
                     enabled: false,
@@ -153,5 +157,9 @@
             // Render the chart
             chart.render();
         });
+
+        function updatePeriode() {
+            $('#modal-form').modal('show');
+        };
     </script>
 @endpush
