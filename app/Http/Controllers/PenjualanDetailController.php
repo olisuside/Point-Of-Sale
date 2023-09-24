@@ -16,7 +16,7 @@ class PenjualanDetailController extends Controller
      */
     public function index()
     {
-        $produk = Produk::orderBy('nama_produk')->get();
+        $produk = Produk::where('stok', '>', 0)->orderBy('nama_produk')->get();
         $member = Member::orderBy('nama')->get();
         $diskon = Setting::first()->diskon ?? 0;
 

@@ -120,7 +120,7 @@
                                     <div class="col-lg-8">
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="kode_member"
-                                                value="{{ $memberSelected->kode_member }}">
+                                                value="{{ $memberSelected->kode_member }}" required>
                                             <span class="input-group-btn">
                                                 <button onclick="tampilMember()" class="btn btn-info btn-flat"
                                                     type="button"><i class="bi bi-arrow-right"></i></button>
@@ -141,7 +141,7 @@
                                         <input type="text" id="bayarrp" class="form-control" readonly>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row " id="diterima-input">
                                     <label for="diterima" class="col-lg-2 control-label">Diterima</label>
                                     <div class="col-lg-8 ">
                                         <div class="input-group">
@@ -152,7 +152,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <div class="form-group row" id="kembali-input">
                                     <label for="kembali" class="col-lg-2 control-label">Kembali</label>
                                     <div class="col-lg-8">
                                         <input type="text" id="kembali" name="kembali" class="form-control"
@@ -164,11 +164,11 @@
                                     <div class="btn-group">
                                         <input type="radio" class="btn-check" name="options-outlined" id="primary-outlined"
                                         autocomplete="off" checked>
-                                        <label class="btn btn-outline-primary" for="primary-outlined">Cashless</label>
+                                        <label class="btn btn-outline-primary" for="primary-outlined">Cash</label>
                                         
                                         <input type="radio" class="btn-check" name="options-outlined" id="second-outlined"
                                         autocomplete="off">
-                                        <label class="btn btn-outline-primary" for="second-outlined">Cash</label>
+                                        <label class="btn btn-outline-primary" for="second-outlined">Cashless</label>
                                     </div>
                                 </div>
                             
@@ -176,6 +176,11 @@
                                 <button type="submit"
                                     class="btn btn-primary btn-sm btn-flat pull-right btn-simpan col-12"><i
                                         class="fa fa-floppy-o"></i> Simpan Transaksi</button>
+                            </div>
+                            <div class="">
+                                <button type="submit"
+                                    class="btn btn-primary btn-sm btn-flat pull-right btn-payment col-12"><i
+                                        class="fa fa-floppy-o"></i> Simpan</button>
                             </div>
                         </form>
                         </div>
@@ -370,6 +375,7 @@
 
             $.get(`{{ url('/transaksi/loadform') }}/${diskon}/${$('.total').text()}/${diterima}`)
                 .done(response => {
+                    
                     $('#totalrp').val('Rp. ' + response.totalrp);
                     $('#bayarrp').val('Rp. ' + response.bayarrp);
                     $('#bayar').val(response.bayar);
@@ -423,4 +429,50 @@
             }
         }
     </script>
+
+<script>
+    // Fungsi untuk mengubah nilai atribut action pada form
+    function updateFormAction() {
+        var form = document.querySelector('.form-penjualan');
+        var cashRadio = document.getElementById('primary-outlined');
+        var cashlessRadio = document.getElementById('second-outlined');
+        var diterimaInput = document.getElementById('diterima-input');
+        var kembaliInput = document.getElementById('kembali-input');
+        var btnsimpan = document.querySelector('.btn-simpan');
+        var btnpayment = document.querySelector('.btn-payment');
+
+        if (cashRadio.checked) {
+            form.action = "{{ route('transaksi.simpan') }}";
+            // Tampilkan kembali dan diterima
+            diterimaInput.style.display = '';
+            kembaliInput.style.display = '';
+            btnpayment.style.display = 'none';
+            btnsimpan.style.display = '';
+        } else if (cashlessRadio.checked) {
+            form.action = "{{ route('transaksi.save') }}";
+            // Sembunyikan kembali dan diterima
+            diterimaInput.style.display = 'none';
+            kembaliInput.style.display = 'none';
+            btnsimpan.style.display = 'none';
+            btnpayment.style.display = '';
+        }
+    }
+
+    // Fungsi untuk menginisialisasi event listener dan pemanggilan awal
+    function initializeFormAction() {
+        var cashRadio = document.getElementById('primary-outlined');
+        var cashlessRadio = document.getElementById('second-outlined');
+
+        cashRadio.addEventListener('change', updateFormAction);
+        cashlessRadio.addEventListener('change', updateFormAction);
+
+        // Panggil fungsi pertama kali saat halaman dimuat
+        updateFormAction();
+    }
+
+    // Panggil fungsi inisialisasi saat halaman dimuat
+    window.onload = initializeFormAction;
+</script>
+
+
 @endpush
