@@ -14,14 +14,9 @@ class CekUserLogin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $rules): Response
+    public function handle(Request $request, Closure $next, ...$level)
     {
-        if (!Auth::check()) {
-            return redirect('login');
-        }
-
-        $user = Auth::user();
-        if ($user->level == $rules) {
+        if (auth()->user() && in_array(auth()->user()->level, $level)) {
             return $next($request);
         }
 
