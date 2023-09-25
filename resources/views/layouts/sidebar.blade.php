@@ -47,7 +47,7 @@
                     </a>
                 </li>
             </ul>
-
+            @if (auth()->user()->level == 0)
             <ul class="menu">
                 <li class="sidebar-title">Transaksi</li>
 
@@ -137,34 +137,79 @@
                 </li>
 
             </ul>
-
-            {{-- <ul class="menu">
-                <li class="sidebar-title">USER</li>
+            @else
+            <ul class="menu">
+                <li class="sidebar-title">Transaksi</li>
 
                 <li class="sidebar-item has-sub">
                     <a href="#" class='sidebar-link '>
-                        <div class="avatar avatar-md">
-                            <img src="assets/images/faces/1.jpg">
-                        </div>
-                        <span><h6 class="mb-0 text-gray-600">{{ Auth::user()->name }}</h6>
-                            <p class="mb-0 text-sm text-gray-600">{{ Auth::user()->email }}</p></span>
+                        <i class="bi bi-cart2"></i>
+                        <span>Penjualan</span>
                     </a>
-
                     <ul class="submenu submenu-open" style="--submenu-height: 731px;">
                         <li class="submenu-item">
-                            <a href="#" class="submenu-link">Transaksi Baru</a>
+                            <a href="{{ route('transaksi.baru') }}" class="submenu-link">Transaksi Baru</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="#" class="submenu-link">Transaksi Aktif</a>
+                            <a href="{{ route('transaksi.index') }}" class="submenu-link">Transaksi Aktif</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="#" class="submenu-link">Detail</a>
+                            <a href="{{ url('penjualan') }}" class="submenu-link">Data Penjualan</a>
                         </li>
                     </ul>
                 </li>
 
+                <li class="sidebar-item  ">
+                    <a href="{{ url('pembelian') }}" class='sidebar-link'>
+                        <i class="bi bi-cart-plus"></i>
+                        <span>Pembelian</span>
+                    </a>
+                </li>
+                
+                <li class="sidebar-item">
+                    <a href="{{ url('pengeluaran') }}" class='sidebar-link'>
+                        <i class="bi bi-cash-coin"></i>
+                        <span>Pengeluaran</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  ">
+                    <a href="{{ url('laporan')}}" class='sidebar-link'>
+                        <i class="bi bi-clipboard-pulse"></i>
+                        <span>Laporan</span>
+                    </a>
+                </li>
+            </ul>
 
-            </ul> --}}
+            <ul class="menu">
+                <li class="sidebar-title">Data</li>
+
+                <li class="sidebar-item">
+                    <a href="{{ url('kategori') }}" class='sidebar-link'>
+                        <i class="bi bi-box"></i>
+                        <span>Kategori</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item  ">
+                    <a href="{{ url('produk') }}" class='sidebar-link'>
+                        <i class="bi bi-boxes"></i>
+                        <span>Produk</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  ">
+                    <a href="{{ url('supplier') }}" class='sidebar-link'>
+                        <i class="bi bi-truck"></i>
+                        <span>Supplier</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ url('member') }}" class='sidebar-link'>
+                        <i class="bi bi-person"></i>
+                        <span>Member</span>
+                    </a>
+                </li>
+            </ul>
+            @endif
         </div>
     </div>
 </div>
