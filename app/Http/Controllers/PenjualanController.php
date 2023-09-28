@@ -63,15 +63,15 @@ class PenjualanController extends Controller
                 if ($penjualan->status == 'paid') {
                     return '
                 <div class="btn-group">
-                    <button onclick="showDetail(`' . route('penjualan.show', $penjualan->id_penjualan) . '`)" class="btn btn-xs btn-primary btn-flat"><i class="bi bi-eye"></i></button>
-                    <button onclick="deleteData(`' . route('penjualan.destroy', $penjualan->id_penjualan) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
+                    <button onclick="showDetail(`' . route('penjualan.show', $penjualan->id_penjualan) . '`)" class="btn btn-sm btn-primary btn-flat"><i class="bi bi-eye"></i></button>
+                    <button onclick="deleteData(`' . route('penjualan.destroy', $penjualan->id_penjualan) . '`)" class="btn btn-sm btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
                 </div>
                 ';
                 } elseif ($penjualan->status == 'pending') {
                     return '
                 <div class="btn-group">
-                    <button onclick="showDetail(`' . route('penjualan.show', $penjualan->id_penjualan) . '`)" class="btn btn-xs btn-primary btn-flat"><i class="bi bi-eye"></i></button>
-                    <button onclick="deleteData(`' . route('penjualan.destroy', $penjualan->id_penjualan) . '`)" class="btn btn-xs btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
+                    <button onclick="showDetail(`' . route('penjualan.show', $penjualan->id_penjualan) . '`)" class="btn btn-sm btn-primary btn-flat"><i class="bi bi-eye"></i></button>
+                    <button onclick="deleteData(`' . route('penjualan.destroy', $penjualan->id_penjualan) . '`)" class="btn btn-sm btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
                 </div>
                 ';
                 } else {
