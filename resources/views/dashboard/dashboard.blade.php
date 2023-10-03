@@ -107,7 +107,7 @@
         $(function() {
             var options = {
                 series: [{
-                    name: "Pendapatan",
+                    name: "Laba",
                     data: {{ json_encode($data['data_pendapatan']) }}
                 },
                 {
