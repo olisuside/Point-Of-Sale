@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between">
-                            <h4>Data Supplier</h4>
+                            <h4>Data Transaksi</h4>
                             <a class="btn btn-sm btn-primary" title="Tambah Supllier" onclick="addForm()"><i
                                     class="bi bi-plus"></i></a>
                         </div>
