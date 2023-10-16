@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div class="container col-4 auth">
+    <div class="container col-lg-4 auth">
         @yield('contents')
         {{-- <h1 class="auth-title">TB SEMPULUR</h1> --}}
                        

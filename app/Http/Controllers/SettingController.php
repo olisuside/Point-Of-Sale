@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
@@ -65,9 +66,9 @@ class SettingController extends Controller
         if ($request->hasFile('path_logo')) {
             $file = $request->file('path_logo');
             $nama = 'logo-' . date('YmdHis') . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('/img'), $nama);
+            Storage::disk('public')->put('img/' . $nama, file_get_contents($file));
 
-            $setting->path_logo = "/img/$nama";
+            $setting->path_logo = "storage/img/$nama";
         }
 
 

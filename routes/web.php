@@ -27,6 +27,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
+
 Route::get('/', fn () => redirect()->route('login'));
 
 Route::group(['middleware' => 'auth'], function () {

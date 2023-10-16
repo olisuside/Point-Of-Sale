@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -130,9 +131,8 @@ class UserController extends Controller
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $nama = 'foto-' . date('YmdHis') . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('/img'), $nama);
-
-            $user->foto = "/img/$nama";
+            Storage::disk('public')->put('img/' . $nama, file_get_contents($file));
+            $user->foto = "storage/img/$nama";
         }
 
         $user->update();
