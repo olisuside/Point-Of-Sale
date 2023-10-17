@@ -68,13 +68,13 @@ class SettingController extends Controller
             $nama = 'logo-' . date('YmdHis') . '.' . $file->getClientOriginalExtension();
             Storage::disk('public')->put('img/' . $nama, file_get_contents($file));
 
-            $setting->path_logo = "storage/img/$nama";
+            $setting->path_logo = "/storage/img/$nama";
         }
 
 
         $setting->update();
 
-        return response()->json('Data berhasil disimpan', 200);
+        return redirect()->route('setting.index')->with('success', 'User has been update successfully.');
     }
 
     /**

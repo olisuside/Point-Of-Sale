@@ -132,7 +132,7 @@ class UserController extends Controller
             $file = $request->file('foto');
             $nama = 'foto-' . date('YmdHis') . '.' . $file->getClientOriginalExtension();
             Storage::disk('public')->put('img/' . $nama, file_get_contents($file));
-            $user->foto = "storage/img/$nama";
+            $user->foto = "/storage/img/$nama";
         }
 
         $user->update();
