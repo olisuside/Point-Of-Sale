@@ -30,7 +30,7 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
-                            <table class="table table-striped" id="table-laporan">
+                            <table class="table table-striped table-responsive" id="table-laporan">
                                 <thead>
                                     <tr>
                                         <th>Tanggal</th>
@@ -66,6 +66,7 @@ $(function () {
         processing: true,
         serverSide: true,
         autoWidth: false,
+        "scrollX": true, 
         ajax: {
             url: '{{ route('laporan.data', [$tanggalAwal, $tanggalAkhir]) }}',
         },

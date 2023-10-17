@@ -29,7 +29,7 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
-                            <table class="table table-striped" id="table-pembelian">
+                            <table class="table table-striped table-responsive" id="table-pembelian">
                                 <thead>
                                     <tr>
                                         <th>Tanggal</th>
@@ -66,6 +66,7 @@
                 processing: true,
                 serverSide: true,
                 autoWidth: false,
+                "scrollX": true,
                 ajax: {
                     url: '{{ route('pembelian.data') }}',
                 },

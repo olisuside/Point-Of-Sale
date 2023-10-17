@@ -19,7 +19,7 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
-                            <table class="table table-striped" id="table-penjualan">
+                            <table class="table table-striped table-responsive" id="table-penjualan">
                                 <thead>
                                     <tr>
                                         <th>Tanggal</th>
@@ -52,10 +52,11 @@
 
         $(function() {
             table = $('#table-penjualan').DataTable({
-                responsive: true,
+                responsive: false,
                 processing: true,
                 serverSide: true,
                 autoWidth: false,
+                "scrollX": true, 
                 ajax: {
                     url: '{{ route('penjualan.data') }}',
                 },

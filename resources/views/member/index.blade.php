@@ -25,7 +25,7 @@
                                         aria-label="Close"></button>
                                 </div>
                             @endif
-                            <table class="table table-striped" id="table-member">
+                            <table class="table table-striped table-responsive" id="table-member">
                                 <thead>
                                     <tr>
                                         <th>Kode</th>
@@ -54,6 +54,7 @@
                     processing: true,
                     serverSide: true,
                     autoWidth: false,
+                    "scrollX": true, 
                     ajax: {
                         url: '{{ route('member.data') }}',
                     },

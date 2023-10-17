@@ -22,7 +22,7 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-                        <table class="table table-striped" id="table-user">
+                        <table class="table table-striped table-responsive" id="table-user">
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
@@ -53,6 +53,7 @@
             processing: true,
             serverSide: true,
             autoWidth: false,
+            "scrollX": true, 
             ajax: {
                 url: '{{ route('user.data') }}',
             },
