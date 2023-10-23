@@ -70,7 +70,7 @@ class PenjualanController extends Controller
                 } elseif ($penjualan->status == 'pending') {
                     return '
                 <div class="btn-group">
-                    <button onclick="showDetail(`' . route('penjualan.show', $penjualan->id_penjualan) . '`)" class="btn btn-sm btn-primary btn-flat"><i class="bi bi-eye"></i></button>
+                    <button onclick="window.location.href=`' . route('transaksi.edit', $penjualan->id_penjualan) . '`" class="btn btn-sm btn-warning btn-flat"><i class="bi bi-pencil"></i></button>
                     <button onclick="deleteData(`' . route('penjualan.destroy', $penjualan->id_penjualan) . '`)" class="btn btn-sm btn-danger btn-flat"><i class="bi bi-trash3"></i></button>
                 </div>
                 ';

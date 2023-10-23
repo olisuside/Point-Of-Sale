@@ -3,34 +3,34 @@
 @section('title', 'Pembelian')
 
 @push('css')
-<style>
-    .tampil-bayar {
-        font-size: 4em;
-        text-align: center;
-        align-items: center;
-        height: 100px;
-        color: white;
-    }
-
-    .tampil-terbilang {
-        padding: 10px;
-        background: primary;
-        text-align: center;
-        align-items: center;
-    }
-
-    #table-pembelian tbody tr:last-child {
-        display: none;
-    }
-
-    @media(max-width: 768px) {
+    <style>
         .tampil-bayar {
-            font-size: 3em;
-            height: 70px;
-            padding-top: 5px;
+            font-size: 4em;
+            text-align: center;
+            align-items: center;
+            height: 100px;
+            color: white;
         }
-    }
-</style>
+
+        .tampil-terbilang {
+            padding: 10px;
+            background: primary;
+            text-align: center;
+            align-items: center;
+        }
+
+        #table-pembelian tbody tr:last-child {
+            display: none;
+        }
+
+        @media(max-width: 768px) {
+            .tampil-bayar {
+                font-size: 3em;
+                height: 70px;
+                padding-top: 5px;
+            }
+        }
+    </style>
 @endpush
 
 @section('contents')
@@ -65,7 +65,17 @@
                 <div class="card-body">
                     <form class="form-produk">
                         @csrf
-                        <div class="form-group row">
+                        <div class="form-group d-flex justify-content-between">
+                            <label>Data Produk</label>
+                            <input type="hidden" name="id_pembelian" id="id_pembelian" value="{{ $id_pembelian }}">
+                            <input type="hidden" name="id_produk" id="id_produk">
+                            <input type="hidden" class="form-control" name="kode_produk" id="kode_produk">
+
+                            <button onclick="tampilProduk()" class="btn btn-info btn-sm" type="button"><i
+                                    class="bi bi-plus"></i></button>
+
+                        </div>
+                        {{-- <div class="form-group row">
                             <label for="kode_produk" class="col-lg-2">Kode Produk</label>
                             <div class="col-lg-5">
                                 <div class="input-group">
@@ -78,7 +88,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
 
                     <table class="table table-stiped table-bordered " id="table-pembelian">
@@ -138,15 +148,16 @@
 
                             </form>
                             <div class="">
-                                <button type="submit" class="btn btn-primary btn-sm btn-flat pull-right btn-simpan col-12"><i
+                                <button type="submit"
+                                    class="btn btn-primary btn-sm btn-flat pull-right btn-simpan col-12"><i
                                         class="fa fa-floppy-o"></i> Simpan Transaksi</button>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -311,25 +322,23 @@
                     return;
                 })
         }
+
         function checkValue(input) {
             var newValue = parseInt(input.value);
             var feedbackDiv = document.getElementById('feedback');
 
-            if(newValue < 0) {
+            if (newValue < 0) {
                 input.value = 0; // Jika jumlah melebihi stok, ubah nilainya menjadi stok maksimum
                 feedbackDiv.className = 'invalid-feedback';
-                input.className = 'form-control input-sm quantity is-invalid'
-               ;
+                input.className = 'form-control input-sm quantity is-invalid';
                 // Menambahkan teks pesan pada div "feedback"
-                feedbackDiv.innerHTML = 'Jumlah tidak boleh kurang dari 0' ;
+                feedbackDiv.innerHTML = 'Jumlah tidak boleh kurang dari 0';
 
-            } 
-            else {
+            } else {
                 // Jika jumlah valid, hapus class "invalid" dan teks pesan pada div "feedback"
                 feedbackDiv.className = '';
                 feedbackDiv.innerHTML = '';
             }
         }
-  
     </script>
 @endpush

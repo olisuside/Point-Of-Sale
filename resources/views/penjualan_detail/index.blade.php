@@ -65,7 +65,16 @@
                 <div class="card-body">
                     <form class="form-produk">
                         @csrf
-                        <div class="form-group row">
+                        <div class="form-group d-flex justify-content-between">
+                            <label>Data Produk</label>
+                            <input type="hidden" name="id_penjualan" id="id_penjualan" value="{{ $id_penjualan }}">
+                            <input type="hidden" name="id_produk" id="id_produk">
+                            <input type="hidden" class="form-control" name="kode_produk" id="kode_produk">
+                            <button onclick="tampilProduk()" class="btn btn-info btn-sm" type="button"><i
+                                class="bi bi-plus"></i></button>
+                        </div>
+                        
+                        {{-- <div class="form-group row">
                             <label for="kode_produk" class="col-lg-2">Kode Produk</label>
                             <div class="col-lg-5">
                                 <div class="input-group">
@@ -78,7 +87,7 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
 
                     <table class="table table-stiped table-bordered " id="table-penjualan">
