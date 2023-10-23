@@ -3,8 +3,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Pilih Produk</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <i data-feather="x"></i>
+                </button>
             </div>
             <div class="modal-body">
                 <table class="table table-striped table-produk">
