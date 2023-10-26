@@ -54,6 +54,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->name = $request->name;
+        $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->level = 1;
@@ -88,6 +89,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->name = $request->name;
+        $user->username = $request->username;
         $user->email = $request->email;
         if ($request->has('password') && $request->password != "") 
             $user->password = bcrypt($request->password);

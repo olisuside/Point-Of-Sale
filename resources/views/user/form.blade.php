@@ -24,6 +24,15 @@
                     </div>
                     <div class="row">
                         <div class="col-md-4">
+                            <label>Username</label>
+                        </div>
+
+                        <div class="col-md-8 form-group">
+                            <input type="text" name="username" id="username" placeholder="Username" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
                             <label>Email</label>
                         </div>
 
@@ -37,7 +46,11 @@
                         </div>
 
                         <div class="col-md-8 form-group">
+                            <div class="input-group">
                             <input type="password" name="password" id="password" placeholder="Password" class="form-control" required minlength="6">
+                            <a class="btn icon btn-secondary" onclick="myFunction('password')">
+                                <i class="bi bi-eye"></i></a>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -46,7 +59,11 @@
                         </div>
 
                         <div class="col-md-8 form-group">
+                            <div class="input-group">
                             <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Password" class="form-control" required data-match='#password'>
+                            <a class="btn icon btn-secondary" onclick="myFunction('password_confirmation')">
+                                <i class="bi bi-eye"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

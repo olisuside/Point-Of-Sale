@@ -108,6 +108,7 @@
         $.get(url)
             .done((response) => {
                 $('#modal-form [name=name]').val(response.name);
+                $('#modal-form [name=username]').val(response.username);
                 $('#modal-form [name=email]').val(response.email);
             })
             .fail((errors) => {
@@ -131,5 +132,13 @@
                 });
         }
     }
+    function myFunction(inputId) {
+            var x = document.getElementById(inputId);
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        };
 </script>
 @endpush
