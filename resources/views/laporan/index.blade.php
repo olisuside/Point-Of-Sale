@@ -33,6 +33,7 @@
                             <table class="table table-striped table-responsive" id="table-laporan">
                                 <thead>
                                     <tr>
+                                        <th width="5%">No</th>
                                         <th>Tanggal</th>
                                         <th>Penjualan</th>
                                         <th>Pembelian</th>
@@ -71,7 +72,7 @@ $(function () {
             url: '{{ route('laporan.data', [$tanggalAwal, $tanggalAkhir]) }}',
         },
         columns: [
-            
+            {data: 'DT_RowIndex', searchable: false, sortable: false},
             {data: 'tanggal'},
             {data: 'penjualan'},
             {data: 'pembelian'},
