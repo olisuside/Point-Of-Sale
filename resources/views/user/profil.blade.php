@@ -38,7 +38,7 @@
 
                                     <div class="col-md-8 form-group">
                                         <input type="text" name="name" id="name" placeholder="Nama User"
-                                            class="form-control" value="{{ $profil->name }}">
+                                            class="form-control" value="{{ $profil->name }}" oninput="onlyText(this)">
                                     </div>
                                 </div>
                                 <div class="row">

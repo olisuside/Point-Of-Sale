@@ -19,7 +19,7 @@
                             <label>Nama</label>
                         </div>
                         <div class="col-md-8 form-group">
-                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" required autofocus>
+                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" oninput="onlyText(this)" required autofocus>
                         </div>
 
                         <div class="col-md-4">

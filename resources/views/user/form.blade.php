@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="col-md-8 form-group">
-                            <input type="text" name="name" id="name" placeholder="Nama User" class="form-control" required>
+                            <input type="text" name="name" id="name" placeholder="Nama User" class="form-control" oninput="onlyText(this)" required>
                         </div>
                     </div>
                     <div class="row">

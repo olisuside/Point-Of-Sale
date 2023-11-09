@@ -67,7 +67,12 @@
     <script src="{{ asset('https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js') }}"></script>
     {{-- <script src="assets/js/pages/datatables.js"></script> --}}
 
-
+    <script>
+        function onlyText(inputField) {
+            const regex = /[^A-Za-z ']/g;
+            inputField.value = inputField.value.replace(regex, '');
+        }
+    </script>
 
     @stack('scripts')
 

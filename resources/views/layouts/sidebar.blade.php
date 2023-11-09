@@ -166,12 +166,7 @@
                     </a>
                 </li>
                 
-                <li class="sidebar-item">
-                    <a href="{{ url('pengeluaran') }}" class='sidebar-link'>
-                        <i class="bi bi-cash-coin"></i>
-                        <span>Pengeluaran</span>
-                    </a>
-                </li>
+               
                 <li class="sidebar-item  ">
                     <a href="{{ url('laporan')}}" class='sidebar-link'>
                         <i class="bi bi-clipboard-pulse"></i>
@@ -183,19 +178,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Data</li>
 
-                <li class="sidebar-item">
-                    <a href="{{ url('kategori') }}" class='sidebar-link'>
-                        <i class="bi bi-box"></i>
-                        <span>Kategori</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item  ">
-                    <a href="{{ url('produk') }}" class='sidebar-link'>
-                        <i class="bi bi-boxes"></i>
-                        <span>Produk</span>
-                    </a>
-                </li>
+               
                 <li class="sidebar-item  ">
                     <a href="{{ url('supplier') }}" class='sidebar-link'>
                         <i class="bi bi-truck"></i>

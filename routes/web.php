@@ -35,7 +35,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/data/{tanggal_awal}/{tanggal_akhir}', [LaporanController::class, 'data'])->name('dashboard.data');
 
     Route::middleware(['cekUserLogin:0'])->group(function () {
-        
+        Route::get('/kategori/data', [KategoriController::class, 'data'])->name('kategori.data');
+        Route::resource('/kategori', KategoriController::class);
+
+        Route::get('/produk/data', [ProdukController::class, 'data'])->name('produk.data');
+        Route::resource('/produk', ProdukController::class);
+
+        Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
+        Route::resource('/pengeluaran', PengeluaranController::class);
+
         Route::get('/user/data', [UserController::class, 'data'])->name('user.data');
         Route::resource('/user', UserController::class);
 
@@ -45,17 +53,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group(['middleware' => ['cekUserLogin:0,1']], function () {
-        Route::get('/kategori/data', [KategoriController::class, 'data'])->name('kategori.data');
-        Route::resource('/kategori', KategoriController::class);
-
-        Route::get('/produk/data', [ProdukController::class, 'data'])->name('produk.data');
-        Route::resource('/produk', ProdukController::class);
-
+       
         Route::get('/supplier/data', [SupplierController::class, 'data'])->name('supplier.data');
         Route::resource('/supplier', SupplierController::class);
 
-        Route::get('/pengeluaran/data', [PengeluaranController::class, 'data'])->name('pengeluaran.data');
-        Route::resource('/pengeluaran', PengeluaranController::class);
 
         Route::get('/pembelian/data', [PembelianController::class, 'data'])->name('pembelian.data');
         Route::get('/pembelian/{id}/create', [PembelianController::class, 'create'])->name('pembelian.create');
