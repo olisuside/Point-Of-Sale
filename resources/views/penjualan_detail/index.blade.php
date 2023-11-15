@@ -36,30 +36,6 @@
 @section('contents')
     <section class="row">
         <div class="col-12 col-lg-12">
-            {{-- <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body py-1" style="font-size: smaller">
-                            <table class="table table-borderless my-1">
-                                <tr class="row">
-                                    <td class="col-lg-2 col-md-4">Supplier</td>
-                                    <td class="col-lg-2 col-md-4">: {{ $supplier->nama }}</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="col-lg-2 col-md-4">Telepon</td>
-                                    <td class="col-lg-2 col-md-4">: {{ $supplier->telepon }}</td>
-                                </tr>
-                                <tr class="row">
-                                    <td class="col-lg-2 col-md-4">Alamat</td>
-                                    <td class="col-lg-2 col-md-4">: {{ $supplier->alamat }}</td>
-                                </tr>
-                            </table>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div> --}}
 
             <div class="card">
                 <div class="card-body">

@@ -62,10 +62,10 @@
                         data: 'nama'
                     },
                     {
-                        data: 'telepon'
+                        data: 'alamat'
                     },
                     {
-                        data: 'alamat'
+                        data: 'telepon'
                     },
                     {
                         data: 'aksi',
